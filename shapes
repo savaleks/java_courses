@@ -1,0 +1,109 @@
+package lesson5;
+public abstract class Shape {
+    public abstract double area();
+    public abstract double perimeter();
+}
+
+package lesson5;
+
+public class Rectangle extends Shape {
+    private final double width, length;
+
+    public Rectangle() {
+        this(1,1);
+    }
+    public Rectangle(double width, double length) {
+        this.width = width;
+        this.length = length;
+    }
+
+    @Override
+    public double area() {
+        return width * length;
+    }
+
+    @Override
+    public double perimeter() {
+        return 2 * (width + length);
+    }
+
+}
+
+package lesson5;
+
+public class Circle extends Shape {
+    private final double radius;
+    final double pi = Math.PI;
+
+    public Circle() {
+        this(1);
+    }
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double area() {
+        return pi * Math.pow(radius, 2);
+    }
+
+    public double perimeter() {
+        return 2 * pi * radius;
+    }
+}
+
+package lesson5;
+
+public class Triangle extends Shape {
+    private final double a, b, c; // sides
+
+    public Triangle() {
+        this(1,1,1);
+    }
+    public Triangle(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    @Override
+    public double area() {
+        // Heron's formula
+        double s = (a + b + c) / 2;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    @Override
+    public double perimeter() {
+        return a + b + c;
+    }
+}
+
+
+package lesson5;
+
+public class TestShape {
+    public static void main(String[] args) {
+
+        // Rectangle test
+        double width = 5, length = 7;
+        Shape rectangle = new Rectangle(width, length);
+        System.out.println("Rectangle width: " + width + " and length: " + length
+                + "\nResulting area: " + rectangle.area()
+                + "\nResulting perimeter: " + rectangle.perimeter() + "\n");
+
+        // Circle test
+        double radius = 5;
+        Shape circle = new Circle(radius);
+        System.out.println("Circle radius: " + radius
+                + "\nResulting Area: " + circle.area()
+                + "\nResulting Perimeter: " + circle.perimeter() + "\n");
+
+        // Triangle test
+        double a = 5, b = 3, c = 4;
+        Shape triangle = new Triangle(a,b,c);
+        System.out.println("Triangle sides lengths: " + a + ", " + b + ", " + c
+                + "\nResulting Area: " + triangle.area()
+                + "\nResulting Perimeter: " + triangle.perimeter() + "\n");
+    }
+}
