@@ -1,0 +1,44 @@
+
+interface payment{
+    float amount();
+    int accountNum();
+    String accountOwner();
+}
+class employee implements payment{
+    public float amount() {
+        return 9.15f;
+    }
+    @Override
+    public int accountNum(){
+        return 569878555;
+    }
+    @Override
+    public String accountOwner() {
+        return "Petras Petraitis";
+    }
+}
+class client implements payment{
+    public float amount() {
+        return 9.7f;
+    }
+    @Override
+    public int accountNum() {
+        return 589486483;
+    }
+    @Override
+    public String accountOwner() {
+        return "Jonas Jonaitis";
+    }
+}
+class TestInterface2{
+    public static void main(String[] args){
+        payment b=new employee();
+        payment c = new client();
+        System.out.println("suma: "+b.amount() + " EU");
+        System.out.println("saskaita: LT"+b.accountNum());
+        System.out.println("vardas,pavarde: "+b.accountOwner());
+        System.out.println("suma: "+c.amount() + " EU");
+        System.out.println("saskaita: LT"+c.accountNum());
+        System.out.println("vardas,pavarde: "+c.accountOwner());
+
+    }}
