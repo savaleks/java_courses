@@ -1,0 +1,29 @@
+package lesson8;
+
+import java.math.BigDecimal;
+
+public class VatPrice {
+    public static void main(String[] args){
+        printCheck(3, new BigDecimal("5.0"));
+    }
+    private static void printCheck(int quantity, BigDecimal totalAmount){
+        //TODO
+        BigDecimal prekes = new BigDecimal("3");
+        BigDecimal kaina = new BigDecimal("5.0");
+
+//        BigDecimal suma =  prekes.divide(kaina, 2, BigDecimal.ROUND_HALF_UP);
+//        suma = suma.setScale(2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal simtas = new BigDecimal("100");
+        BigDecimal pvm = new BigDecimal("21");
+
+        BigDecimal sumBePvm = prekes.multiply(kaina);
+        BigDecimal sumPvm = sumBePvm.divide(simtas, 2, BigDecimal.ROUND_HALF_UP).multiply(pvm);
+        BigDecimal resultSum = sumBePvm.add(sumPvm);
+        System.out.println("Prekes kaina be PVM: " + kaina + "\n" + 
+                            "Kiekis: " + prekes + "\n" +
+                            "Suma be PVM: " + sumBePvm + "\n" + 
+                            "PVM suma: " + sumPvm + "\n" + 
+                            "Visa suma su PVM: " + resultSum);
+
+    }
+}
