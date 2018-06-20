@@ -1,0 +1,83 @@
+// interfeiso klase;
+interface Payment{
+    float getAmount();
+    int getAccountNum();
+    String getAccountOwner();
+}
+//darbuotojo klase;
+class Employee implements Payment{
+    private int amount;
+    private int accountNum;
+    private  String acooutOwner;
+    
+    //konstruktorius
+    public Employee(int amount, int accountNum, String acooutOwner) {
+        this.amount = amount;
+        this.accountNum = accountNum;
+        this.acooutOwner = acooutOwner;
+    }
+    // perrasom metodus
+    @Override
+    public float getAmount() {
+        return amount;
+    }
+
+    @Override
+    public int getAccountNum() {
+        return accountNum;
+    }
+
+    @Override
+    public String getAccountOwner() {
+        return acooutOwner;
+    }
+}
+//Kliento klase
+class Client implements Payment{
+    private int amount;
+    private int accountNum;
+    private  String acooutOwner;
+    
+    //konstruktorius
+    public Client(int amount, int accountNum, String acooutOwner) {
+        this.amount = amount;
+        this.accountNum = accountNum;
+        this.acooutOwner = acooutOwner;
+    }
+
+    @Override
+    public float getAmount() {
+        return amount;
+    }
+
+    @Override
+    public int getAccountNum() {
+        return accountNum;
+    }
+
+    @Override
+    public String getAccountOwner() {
+        return acooutOwner;
+    }
+}
+// Pagrindine klase (basic class)
+class TestInterface2{
+    public static void main(String[] args){
+    
+        // masyvas is 2 darbuotoju ir 2 klientu;
+        Client client = new Client(58, 484845852, "Jonas Jonaitis" );
+        Client client1 = new Client(89, 598754654, "Juozas Juozaitis");
+        Employee employee = new Employee(84, 587468447, "Petras Petraitis");
+        Employee employee1 = new Employee(47, 458965874, "Vardas Pavardaitis");
+        
+        //sukuriam masyvo pavadinima 'array' kuris isves musu masyvo duomenys
+        Payment[] array = new Payment[]{client, client1, employee, employee1};
+        
+        // paleidziam 'for' cikla kad grazintu visos duomenys i konsoli;
+        for(int i = 0; i < array.length; i++){
+        
+            System.out.println("Saskaitos numeris: LT" + array[i].getAccountNum() + ", " +
+                    "Pinigu suma: " + array[i].getAmount()+ ", " +
+                    "Savininko duomenys: " + array[i].getAccountOwner());
+        }
+    }}
